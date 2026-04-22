@@ -6,9 +6,9 @@ module Multiplexer(
 
 always_comb begin
 	if(s) begin
-		q <= d[1];
+		q = d[1];
 	end else begin
-		q <= d[0];
+		q = d[0];
 	end
 end
 

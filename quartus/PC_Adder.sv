@@ -5,7 +5,7 @@ module PC_Adder(
 );
 
 always_comb begin
-	q <= d + s - 1;
+	q = d + s - 1;
 end
 
 endmodule

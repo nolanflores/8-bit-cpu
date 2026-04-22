@@ -9,10 +9,10 @@ module MAR_Adder(
 logic [15:0] word;
 
 always_comb begin
-	word <= {high, low} + s - 1;
+	word = {high, low} + s - 1;
 	
-	q_high <= word[15:8];
-	q_low <= word[7:0];
+	q_high = word[15:8];
+	q_low = word[7:0];
 end
 
 endmodule
