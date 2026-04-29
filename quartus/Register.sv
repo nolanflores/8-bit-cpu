@@ -8,11 +8,9 @@ module Register(
 
 always_ff @(posedge clock, negedge reset_n) begin
 	if(!reset_n) begin
-		out <= 0;
-	end else begin
-		if(enable) begin
-			out <= in;
-		end
+		out <= 8'b0;
+	end else if(enable) begin
+		out <= in;
 	end
 end
 

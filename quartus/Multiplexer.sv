@@ -1,15 +1,12 @@
-module Multiplexer(
-	input logic [1:0] d,
-	input logic s,
-	output logic q
+module Multiplexer #(
+	parameter WIDTH = 8,
+	parameter SEL = 2
+)(
+	input logic [2**SEL-1:0][WIDTH-1:0] in,
+	input logic [SEL-1:0] select,
+	output logic [WIDTH-1:0] out
 );
 
-always_comb begin
-	if(s) begin
-		q = d[1];
-	end else begin
-		q = d[0];
-	end
-end
+assign out = in[select];
 
 endmodule
