@@ -1,11 +1,11 @@
 module PC_Adder(
-	input logic [7:0] d,
-	input logic [1:0] s,
-	output logic [7:0] q
+	input logic [7:0] in,
+	input logic [1:0] delta,
+	output logic [7:0] out
 );
 
 always_comb begin
-	q = d + s - 1;
+	out = in + delta - 1;
 end
 
 endmodule

@@ -1,13 +1,13 @@
 module Program_Memory(
     input [7:0] address,
     input clock,
-    output [15:0] q
+    output [15:0] out
 );
 
     altsyncram altsyncram_component (
         .address_a      (address),
         .clock0         (clock),
-        .q_a            (q),
+        .q_a            (out),
         .aclr0          (1'b0),
         .aclr1          (1'b0),
         .address_b      (1'b1),

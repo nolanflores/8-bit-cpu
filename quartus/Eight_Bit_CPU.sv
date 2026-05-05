@@ -9,7 +9,6 @@ module Eight_Bit_CPU(
 
 logic clock;
 logic reset_n;
-logic [7:0] bus;
 
 Multiplexer #(
 	.WIDTH(2),
@@ -20,75 +19,46 @@ Multiplexer #(
 	.out({clock, reset_n})
 );
 
-logic [2:0][7:0] r_to_segs;
+logic [7:0] bus_wire;
+logic [7:0] pc_wire;
+logic [7:0] ir_wire;
+logic [7:0] dr_wire;
+logic [7:0] marH_wire;
+logic [7:0] marL_wire;
+logic [7:0] mdr_wire;
+logic [7:0] ac_wire;
+logic [7:0] a_wire;
+logic [7:0] b_wire;
+logic [7:0] c_wire;
 
-/* ================================================
- * Segment 0 And Segment 1
- * ================================================
-*/
-
-Register r_seg01(
+Program_Counter(
 	.clock(clock),
-	.enable(1'b0),//add enable line
 	.reset_n(reset_n),
-	.in(bus),
-	.out(r_to_segs[0])
+	.bus_in(8'h00),
+	.pc_enable(switches[0]),
+	.select(2'd2),
+	.pc(pc_wire)
 );
 
-Seven_Segment_Display seg0(
-	.in(r_to_segs[0][3:0]),
-	.out(displays[0])
-);
-
-Seven_Segment_Display seg1(
-	.in(r_to_segs[0][7:4]),
-	.out(displays[1])
-);
-
-/* ================================================
- * Segment 2 And Segment 3
- * ================================================
-*/
-
-Register r_seg23(
+Fetch_Unit(
 	.clock(clock),
-	.enable(1'b0),//add enable line
 	.reset_n(reset_n),
-	.in(bus),
-	.out(r_to_segs[1])
+	.ir_enable(1'b1),
+	.dr_enable(1'b1),
+	.pc(pc_wire),
+	.ir(ir_wire),
+	.dr(dr_wire)
 );
 
-Seven_Segment_Display seg2(
-	.in(r_to_segs[1][3:0]),
-	.out(displays[2])
-);
-
-Seven_Segment_Display seg3(
-	.in(r_to_segs[1][7:4]),
-	.out(displays[3])
-);
-
-/* ================================================
- * Segment 4 And Segment 5
- * ================================================
-*/
-
-Register r_seg45(
-	.clock(clock),
-	.enable(1'b0),//add enable line
-	.reset_n(reset_n),
-	.in(bus),
-	.out(r_to_segs[2])
-);
-
-Seven_Segment_Display seg4(
-	.in(r_to_segs[2][3:0]),
-	.out(displays[4])
-);
-
-Seven_Segment_Display seg5(
-	.in(r_to_segs[2][7:4]),
-	.out(displays[5])
+Hex_Displays(
+	.hex_flag(switches[1]),
+	.pc(pc_wire),
+	.ir(ir_wire),
+	.dr(dr_wire),
+	.hexA(8'hAA),
+	.hexB(8'hBB),
+	.hexC(8'hCC),
+	.displays(displays)
 );
 
 endmodule
