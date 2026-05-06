@@ -4,9 +4,6 @@ module ControlUnit(
 	input logic [7:0] instruction,
 	input logic [7:0] data,
 	
-	output logic [14:0] register_enables,
-	output logic [3:0] bus_mux_select,
-	output logic [2:0] mux_selects,
 	output logic [9:0] status_lights
 );
 

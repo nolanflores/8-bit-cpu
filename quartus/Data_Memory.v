@@ -1,34 +1,34 @@
 module Data_Memory(
-    input  [13:0] address,
-    input  [7:0]            data,
-    input                   wr_en,
-    input                   clock,
-    output [7:0]            q
+	input [13:0] address,
+	input [7:0] data,
+	input wr_en,
+	input clock,
+	output [7:0] out
 );
 
-    altsyncram altsyncram_component (
-        .address_a      (address),
-        .clock0         (clock),
-        .data_a         (data),
-        .wren_a         (wr_en),
-        .q_a            (q),
-        .aclr0          (1'b0),
-        .aclr1          (1'b0),
-        .address_b      (1'b1),
-        .addressstall_a (1'b0),
-        .addressstall_b (1'b0),
-        .byteena_a      (1'b1),
-        .byteena_b      (1'b1),
-        .clock1         (1'b1),
-        .clocken0       (1'b1),
-        .clocken1       (1'b1),
-        .clocken2       (1'b1),
-        .clocken3       (1'b1),
-        .data_b         (1'b1),
-        .rden_a         (1'b1),
-        .rden_b         (1'b1),
-        .wren_b         (1'b0)
-    );
+	altsyncram altsyncram_component(
+		.address_a      (address),
+		.clock0         (clock),
+		.data_a         (data),
+		.wren_a         (wr_en),
+		.q_a            (out),
+		.aclr0          (1'b0),
+		.aclr1          (1'b0),
+		.address_b      (1'b1),
+		.addressstall_a (1'b0),
+		.addressstall_b (1'b0),
+		.byteena_a      (1'b1),
+		.byteena_b      (1'b1),
+		.clock1         (1'b1),
+		.clocken0       (1'b1),
+		.clocken1       (1'b1),
+		.clocken2       (1'b1),
+		.clocken3       (1'b1),
+		.data_b         (1'b1),
+		.rden_a         (1'b1),
+		.rden_b         (1'b1),
+		.wren_b         (1'b0)
+	);
 
     defparam
         altsyncram_component.operation_mode         = "SINGLE_PORT",
