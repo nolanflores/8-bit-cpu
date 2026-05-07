@@ -20,7 +20,7 @@ module Program_Memory(
         .clocken1       (1'b1),
         .clocken2       (1'b1),
         .clocken3       (1'b1),
-        .data_a         (8'b0),
+        .data_a         (16'b0),
         .data_b         (1'b1),
         .rden_a         (1'b1),
         .rden_b         (1'b1),

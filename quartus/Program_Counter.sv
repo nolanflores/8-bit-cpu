@@ -9,7 +9,7 @@ module Program_Counter(
 
 logic [7:0] pc_next;
 
-Register pc_reg(
+Register pc_register(
 	.clock(clock),
 	.enable(pc_enable),
 	.reset_n(reset_n),
@@ -21,7 +21,7 @@ always_comb begin
 	if(select == 2'b01) begin
 		pc_next = bus_in;
 	end else begin
-		pc_next = pc + select - 1;
+		pc_next = pc + select - 8'b1;
 	end
 end
 

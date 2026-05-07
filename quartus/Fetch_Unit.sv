@@ -10,7 +10,7 @@ module Fetch_Unit(
 
 logic [15:0] program_wire;
 
-Program_Memory(
+Program_Memory program_inst(
     .address(pc),
     .clock(clock),
     .out(program_wire)

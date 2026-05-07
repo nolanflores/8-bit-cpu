@@ -1,36 +1,24 @@
 module ControlUnit(
-	input logic clock,
-	input logic reset_n,
-	input logic [7:0] instruction,
-	input logic [7:0] data,
+	input logic clock, input logic reset_n,
+	
+	input logic [7:0] ir, input logic [7:0] dr,
+	
+	output logic pc_enable, output logic ir_enable,
+	output logic dr_enable, output logic sr_enable,
+	output logic marH_enable, output logic marL_enable,
+	output logic mdr_enable, output logic ac_enable,
+	output logic A_enable, output logic B_enable,
+	output logic C_enable, output logic hexA_enable,
+	output logic hexB_enable, output logic hexC_enable,
+
+	output logic ac_select, output logic sr_select,
+	output logic wr_select, output logic mdr_select,
+	output logic [1:0] mar_select,
+	output logic [1:0] pc_select,
+	output logic [3:0] alu_select,
+	output logic [3:0] bus_select,
 	
 	output logic [9:0] status_lights
 );
-
-logic [2:0] cycles;
-
-always_comb begin
-	case(cycles)
-		3'd0: status_lights[6:0] = 7'b000_0000;
-		3'd1: status_lights[6:0] = 7'b000_0001;
-		3'd2: status_lights[6:0] = 7'b000_0011;
-		3'd3: status_lights[6:0] = 7'b000_0111;
-		3'd4: status_lights[6:0] = 7'b000_1111;
-		3'd5: status_lights[6:0] = 7'b001_1111;
-		3'd6: status_lights[6:0] = 7'b011_1111;
-		3'd7: status_lights[6:0] = 7'b111_1111;
-	endcase
-end
-
-
-always_ff @(posedge clock, negedge reset_n) begin
-	if(!reset_n) begin
-		cycles <= 3'd0;
-	end else begin
-		if(cycles == 3'd0) begin //fetch
-			
-		end
-	end
-end
 
 endmodule

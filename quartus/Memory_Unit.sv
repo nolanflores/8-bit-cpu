@@ -4,7 +4,7 @@ module Memory_Unit(
 	input logic [7:0] bus_in,
 	input logic [7:0] marH,
 	input logic [7:0] marL,
-	input logic wr_enable,
+	input logic wr_select,
 	input logic mdr_enable,
 	input logic mdr_select,
 	output logic [7:0] mdr
@@ -30,10 +30,10 @@ Register mdr_register(
 	.out(mdr)
 );
 
-Data_Memory(
+Data_Memory data_inst(
 	.address({marH[5:0], marL}),
 	.data(mdr),
-	.wr_en(wr_enable),
+	.wr_en(wr_select),
 	.clock(clock),
 	.out(data)
 );

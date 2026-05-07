@@ -23,7 +23,7 @@ always_comb begin
 				v_out = (~a[7] & ~b[7] & q[7]) | ( a[7] &  b[7] & ~q[7]);
 			end
 		2: begin //sub
-				{c_out, q} = a + (~b) + 1;
+				{c_out, q} = a + (~b) + 9'b1;
 				v_out = (~a[7] &  b[7] & q[7]) | ( a[7] & ~b[7] & ~q[7]);
 			end
 		3: begin //subc
@@ -43,7 +43,7 @@ always_comb begin
 				q = ~a;
 			end
 		8: begin //neg
-				q = ~a + 1;
+				q = ~a + 8'b1;
 				v_out = (a == 8'h80);
 			end
 		9: begin //lsl
@@ -67,11 +67,11 @@ always_comb begin
 				q = {a[7], a[7:1]};
 			end
 		14: begin //inc
-				{c_out, q} = a + 1;
+				{c_out, q} = a + 9'b1;
 				v_out = (~a[7] & q[7]);
 			end
 		15: begin //dec
-				{c_out, q} = a + 8'hFF;
+				{c_out, q} = a + 9'hFF;
 				v_out = ( a[7] & ~q[7]);
 			end
 	endcase
