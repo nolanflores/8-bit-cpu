@@ -1,0 +1,31 @@
+Status Register
+xxxh_svzc
+h - Hex Display flag
+s - Sign flag
+v - Overflow flag
+z - Zero flag
+c - Carry flag
+
+Instruction Bits
+10aa_aaaa aaaa_aaaa m[a] -> mdr
+11aa_aaaa aaaa_aaaa mdr -> m[a]
+
+0000_dddd xxxx_rrrr reg[r] -> d
+0001_dddd iiii_iiii DR -> d
+
+0010_oooo xxxx_rrrr ALU(AC, reg[r], o) -> AC
+0011_oooo iiii_iiii ALU(AC, DR, o) -> AC
+
+0100_0fff xxxx_xxxx Clear SR bit f
+0100_1fff xxxx_xxxx Set SR bit f
+
+0101_0fff xxxx_xxxx Skip if SR bit f is cleared
+0101_1fff xxxx_xxxx Skip if SR bit f is set
+
+011x_0000 xxxx_xxxx m[mar] -> mdr
+011x_0001 xxxx_xxxx m[mar+] -> mdr
+011x_0010 xxxx_xxxx m[mar-] -> mdr
+011x_0011 xxxx_xxxx mdr -> m[mar]
+011x_0100 xxxx_xxxx mdr -> m[mar+]
+011x_0101 xxxx_xxxx mdr -> m[mar-]
+011x_0110 xxxx_xxxx nop
