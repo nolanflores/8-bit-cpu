@@ -37,7 +37,7 @@ module Program_Memory(
         altsyncram_component.intended_device_family = "MAX 10",
         altsyncram_component.lpm_type               = "altsyncram",
         altsyncram_component.lpm_hint               = "ENABLE_RUNTIME_MOD=NO",
-        altsyncram_component.outdata_reg_a          = "CLOCK0",
+        altsyncram_component.outdata_reg_a          = "UNREGISTERED",
         altsyncram_component.outdata_aclr_a         = "NONE",
         altsyncram_component.address_aclr_a         = "NONE",
         altsyncram_component.clock_enable_input_a   = "BYPASS",

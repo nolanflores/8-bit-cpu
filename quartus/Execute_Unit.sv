@@ -11,7 +11,7 @@ module Execute_Unit(
 	output logic [7:0] sr
 );
 
-logic [7:0] ac_alu;
+logic [7:0] alu_out;
 logic [3:0] sr_alu;
 
 Arithmetic_Logic_Unit alu(
@@ -19,7 +19,7 @@ Arithmetic_Logic_Unit alu(
 	.b(bus_in),
 	.select(alu_select),
 	.c_in(sr[0]),
-	.q(ac_alu),
+	.q(alu_out),
 	.c_out(sr_alu[0]),
 	.z_out(sr_alu[1]),
 	.v_out(sr_alu[2]),
@@ -33,7 +33,7 @@ Multiplexer #(
 	.WIDTH(8),
 	.SEL(1)
 ) ac_Mux(
-	.in({bus_in, ac_alu}),
+	.in({alu_out, bus_in}),
 	.select(ac_select),
 	.out(ac_next)
 );
@@ -50,7 +50,7 @@ Multiplexer #(
 	.WIDTH(5),
 	.SEL(1)
 ) sr_Mux(
-	.in({bus_in[4:0], sr[4], sr_alu}),
+	.in({sr[4], sr_alu, bus_in[4:0]}),
 	.select(sr_select),
 	.out(sr_next)
 );

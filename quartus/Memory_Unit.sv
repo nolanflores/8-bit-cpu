@@ -16,7 +16,7 @@ logic [7:0] data;
 Multiplexer #(
 	.WIDTH(8),
 	.SEL(1)
-) marH_Mux(
+) mdr_Mux(
 	.in({bus_in, data}),
 	.select(mdr_select),
 	.out(mdr_next)

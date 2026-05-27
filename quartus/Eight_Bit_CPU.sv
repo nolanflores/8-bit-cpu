@@ -64,15 +64,15 @@ logic [3:0] bus_select;
 ControlUnit control_inst(
 	.clock(clock), .reset_n(reset_n),
 	
-	.ir(ir_wire), .dr(dr_wire),
+	.ir(ir_wire), .dr(dr_wire), .sr(sr_wire),
 	
-	.pc_enable(pc_enable), .ir_enable(ir_enable),
-	.dr_enable(dr_enable), .sr_enable(sr_enable),
-	.marH_enable(marH_enable), .marL_enable(marL_enable),
-	.mdr_enable(mdr_enable), .ac_enable(ac_enable),
-	.A_enable(A_enable), .B_enable(B_enable),
-	.C_enable(C_enable), .hexA_enable(hexA_enable),
-	.hexB_enable(hexB_enable), .hexC_enable(hexC_enable),
+	.register_enables({
+		hexC_enable, hexB_enable,
+		hexA_enable, marH_enable, marL_enable,
+		mdr_enable, sr_enable, ac_enable,
+		C_enable, B_enable, A_enable,
+		dr_enable, ir_enable, pc_enable
+	}),
 
 	.ac_select(ac_select), .sr_select(sr_select),
 	.wr_select(wr_select), .mdr_select(mdr_select),
@@ -89,11 +89,12 @@ Multiplexer #(
 	.SEL(4)
 ) Bus_Mux(
 	.in({
-		8'b0, 8'b0, 8'b0, sw0_wire, sw1_wire,
-		pc_wire, ir_wire, dr_wire,
-		sr_wire, marH_wire, marL_wire,
-		mdr_wire, ac_wire, A_wire,
-		B_wire, C_wire
+		8'b0, 8'b0, 8'b0,
+		sw0_wire, sw1_wire,
+		marH_wire, marL_wire,
+		sr_wire, mdr_wire, ac_wire,
+		C_wire, B_wire, A_wire,
+		pc_wire, ir_wire, dr_wire
 	}),
 	.select(bus_select),
 	.out(bus_wire)

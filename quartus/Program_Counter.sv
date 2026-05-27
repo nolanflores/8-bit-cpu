@@ -18,10 +18,10 @@ Register pc_register(
 );
 
 always_comb begin
-	if(select == 2'b01) begin
+	if(select[1]) begin
 		pc_next = bus_in;
 	end else begin
-		pc_next = pc + select - 8'b1;
+		pc_next = pc + 1'b1 + select[0];
 	end
 end
 
