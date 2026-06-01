@@ -1,6 +1,6 @@
 # 8 Bit CPU
 
-SystemVerilog implementation of an 8 bit CPU, designed with a custon Instruction Set Architecture.
+SystemVerilog implementation of an 8 bit CPU, designed with a custom Instruction Set Architecture.
 It is a Harvard Architecture, using 512 bytes of program memory and 16 kilobytes of data memory.
 This was designed for and deployed on a DE-10 Lite FPGA.
 Additionally, I have written an assembler to compile the custom machine code from a custom assembly language.
@@ -19,7 +19,7 @@ Replace all instances of ./docs/demos/.gitkeep with the actual intended demo fil
 
 Deploying this CPU yourself requires the following things
 
-- C compiler (GCC, CLANG, ect.)
+- C compiler (GCC, CLANG, etc.)
 - [DE-10 Lite](https://www.terasic.com.tw/cgi-bin/page/archive.pl?Language=English&CategoryNo=234&No=1021), or an equivalent FPGA
 - [Intel Quartus Prime software](https://www.altera.com/products/development-tools/quartus)
 
@@ -45,7 +45,7 @@ git clone git@github.com:nolanflores/8-bit-cpu.git
 #### Compile The Project
 
 1. In order to compile, a file named "prog.mif" must exist in the [quartus directory](./quartus/). An [example program](./quartus/prog.mif) already exists here. To run the program that you created in the previous section, your compiled .mif file must replace the provided example.
-2. Once the desried program is in the quartus directory, open the [8-Bit-CPU.qpf](./quartus/8-Bit-CPU.qpf) project file in Quartus.
+2. Once the desired program is in the quartus directory, open the [8-Bit-CPU.qpf](./quartus/8-Bit-CPU.qpf) project file in Quartus.
 3. If you are not using a DE-10 Lite, you will have to change the pin mapping to whatever makes the most sense for your board. I will include a description of the pins in a [documentation file](./docs/manuals/Pin%20Descriptions.txt).
 4. Compile the project with Quartus.
 5. Use the Quartus Programmer tool to program your FPGA device.
